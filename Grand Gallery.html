@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +83,7 @@
 
     <script>
         // ==========================================
-        // 1. 材质生成系统 (保持奢华质感)
+        // 1. Material Generation System
         // ==========================================
         const TextureGen = {
             createParquet: function() {
@@ -91,11 +91,11 @@
                 canvas.width = 1024; canvas.height = 1024;
                 const ctx = canvas.getContext('2d');
                 
-                // 背景色
+                // background color
                 ctx.fillStyle = '#5d4037';
                 ctx.fillRect(0, 0, 1024, 1024);
                 
-                // 绘制木纹拼花
+                // Create wood grain mosaic patterns
                 ctx.strokeStyle = '#3e2723';
                 ctx.lineWidth = 2;
                 const tileSize = 128;
@@ -104,11 +104,11 @@
                     for(let x=0; x<1024; x+=tileSize) {
                         ctx.save();
                         ctx.translate(x, y);
-                        // 随机细微色差模拟真实木头
+                        // Random minor color variations simulate the appearance of real wood
                         ctx.fillStyle = `hsl(25, 30%, ${25 + Math.random()*10}%)`;
                         ctx.fillRect(2, 2, tileSize-4, tileSize-4);
                         
-                        // 木纹线条细节
+                        // Wood grain line details
                         ctx.globalAlpha = 0.1;
                         for(let i=0; i<10; i++) {
                             ctx.beginPath();
@@ -124,7 +124,7 @@
                 tex.wrapS = THREE.RepeatWrapping;
                 tex.wrapT = THREE.RepeatWrapping;
                 tex.repeat.set(4, 4);
-                // 确保颜色空间正确
+                // Make sure the color space is correct
                 tex.encoding = THREE.sRGBEncoding; 
                 return tex;
             },
@@ -132,8 +132,8 @@
                 const canvas = document.createElement('canvas');
                 canvas.width = 512; canvas.height = 512;
                 const ctx = canvas.getContext('2d');
-                ctx.fillStyle = '#4a0404'; ctx.fillRect(0,0,512,512); // 深红底色
-                ctx.fillStyle = '#5e0b0b'; // 花纹色
+                ctx.fillStyle = '#4a0404'; ctx.fillRect(0,0,512,512); // Deep red background
+                ctx.fillStyle = '#5e0b0b'; // Pattern color
                 const scale = 64; 
                 for(let y=0; y<=512; y+=scale) {
                     for(let x=0; x<=512; x+=scale) {
@@ -151,36 +151,36 @@
             },
             createSkyTexture: function() {
                 const loader = new THREE.TextureLoader();
-                // 使用一个高光度的云层天空图片作为贴图
+                // Use a high-contrast cloud sky image as the texture.
                 const skyTexture = loader.load('data:image/jpeg;base64,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')
                 skyTexture.wrapS = THREE.RepeatWrapping;
                 skyTexture.wrapT = THREE.RepeatWrapping;
-                skyTexture.repeat.set(4, 10); // 调整重复次数以覆盖整个天窗
+                skyTexture.repeat.set(4, 10); // Adjust the repetition count to cover the entire skylight.
                 
-                // 设置编码以确保颜色正确
+                // Set the encoding to ensure the correct color.
                 skyTexture.encoding = THREE.sRGBEncoding;
                 
                 return skyTexture;
             },
             createWindowFrameTexture: function() {
                 const canvas = document.createElement('canvas');
-                const size = 512; // 贴图尺寸
+                const size = 512; // Texture size
                 canvas.width = size; 
                 canvas.height = size;
                 const ctx = canvas.getContext('2d');
 
-                // 1. 基础：透明或白色背景（取决于您希望它多亮）
-                // 设为纯白，这样窗框（黑色）会更突出
+                // 1. Base: Transparent or white background
+                // Set it to pure white, so that the window frame (black) will stand out more.
                 ctx.fillStyle = '#ffffff'; 
                 ctx.fillRect(0, 0, size, size);
 
-                // 2. 绘制金属框架网格
-                ctx.lineWidth = 32; // 较细的线条
-                ctx.strokeStyle = '#333333'; // 深灰色，模拟金属框
+                // 2. Draw the metal frame grid
+                ctx.lineWidth = 32; // Finer lines
+                ctx.strokeStyle = '#333333'; // Dark gray, resembling a metal frame
                 
-                const step = 1024; // 网格间距，决定窗格大小
+                const step = 1024; // Grid spacing determines the size of the cells.
                 
-                // 绘制垂直线
+                // Draw a vertical line
                 for(let i=0; i<=size; i+=step) {
                     ctx.beginPath();
                     ctx.moveTo(i, 0); 
@@ -188,7 +188,7 @@
                     ctx.stroke();
                 }
                 
-                // 绘制水平线
+                // Draw a horizontal line
                 for(let i=0; i<=size; i+=step) {
                     ctx.beginPath();
                     ctx.moveTo(0, i); 
@@ -196,16 +196,16 @@
                     ctx.stroke();
                 }
 
-                // 3. 创建 Three.js 贴图对象
+                // 3. Create a Three.js texture object
                 const tex = new THREE.CanvasTexture(canvas);
                 tex.wrapS = THREE.RepeatWrapping;
                 tex.wrapT = THREE.RepeatWrapping;
                 
-                // 调整 repeat.set 来控制网格在天窗上的密度
-                // 如果天窗是 4x10 的比例，这里设置为 (8, 20) 是一个好的起点
+                // Adjust the "repeat.set" to control the density of the grid on the skylight.
+                // The skylight is in a 8x20 ratio.
                 tex.repeat.set(8, 20); 
                 
-                // 确保颜色和亮度正确
+                // Make sure the color and brightness are correct
                 tex.encoding = THREE.sRGBEncoding;
 
                 return tex;
@@ -214,7 +214,7 @@
         };
 
         // ==========================================
-        // 2. 场景核心
+        // 2. Core of the scene
         // ==========================================
         let scene, camera, renderer, controls;
         let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false;
@@ -223,7 +223,7 @@
         const velocity = new THREE.Vector3();
         const direction = new THREE.Vector3();
 
-        // 统一纹理加载器 (解决跨域问题)
+        // Unified Texture Loader (Solves Cross-Domain Issues)
         const textureLoader = new THREE.TextureLoader();
         textureLoader.setCrossOrigin('anonymous');
 function init() {
@@ -232,17 +232,17 @@ function init() {
             scene.fog = new THREE.FogExp2(0x1a0505, 0.012);
 
             camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 150);
-            camera.position.set(0, 1.7, 25); // 初始位置靠近入口，看向蒙娜丽莎
+            camera.position.set(0, 1.7, 25); // The initial position is close to the entrance, facing towards the Mona Lisa.
             
             // ==========================================
-            // 1. 音频系统初始化和加载 (必须在 camera 之后)
+            // 1. Audio system initialization and loading (must be performed after the camera)
             // ==========================================
             listener = new THREE.AudioListener();
-            camera.add(listener); // 将听者添加到相机，声音将随相机移动
+            camera.add(listener); // Add the listener to the camera, and the sound will move along with the camera.
 
             audioLoader = new THREE.AudioLoader();
 
-            // 1.1 加载背景音乐
+            // 1.1Load background music
             bgMusic = new THREE.Audio(listener);
             audioLoader.load('audio/bg_music.mp3', function(buffer) {
                 bgMusic.setBuffer(buffer);
@@ -250,7 +250,7 @@ function init() {
                 bgMusic.setVolume(0.3);
             });
 
-            // 1.2 加载脚步声
+            // 1.2 Loading footsteps
             footstepsSound = new THREE.Audio(listener);
             audioLoader.load('audio/footsteps.mp3', function(buffer) {
                 footstepsSound.setBuffer(buffer);
@@ -258,7 +258,7 @@ function init() {
                 footstepsSound.setVolume(0.5); 
             });
             // ==========================================
-            // 2. 渲染器和DOM设置
+            // 2. Renderer and DOM settings
             // ==========================================
             renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -270,7 +270,7 @@ function init() {
             document.getElementById('container').appendChild(renderer.domElement);
 
             // ==========================================
-            // 3. 控制器和UI设置
+            // 3. Controller and UI settings
             // ==========================================
             controls = new THREE.PointerLockControls(camera, document.body);
 
@@ -279,14 +279,14 @@ function init() {
             
             startBtn.addEventListener('click', () => controls.lock());
 
-            // 3.1 锁定事件 (播放背景音乐)  
+            // 3.1 Lock event (play background music) 
                 controls.addEventListener('lock', () => {
                 uiLayer.style.opacity = '0';
                 setTimeout(() => uiLayer.style.display = 'none', 500);
 
-                // 【修复后的播放逻辑：加入延迟】
+                // Revised playback logic: Incorporate delay
                 if (bgMusic) { 
-                    // 增加 100 毫秒的延迟，确保浏览器 Web Audio Context 已完全激活
+                    // Add a 100-millisecond delay to ensure that the browser's Web Audio Context has been fully activated.
                     setTimeout(() => {
                         if (!bgMusic.isPlaying) {
                             bgMusic.play();
@@ -295,7 +295,7 @@ function init() {
                 }
             });
 
-            // 3.2 解锁事件 (暂停所有音乐)
+            // 3.2 Unlock event (pause all music)
             controls.addEventListener('unlock', () => {
                 uiLayer.style.display = 'flex';
                 setTimeout(() => uiLayer.style.opacity = '1', 10);
@@ -309,7 +309,7 @@ function init() {
             });
             
             // ==========================================
-            // 4. 启动所有模块
+            // 4. Start all modules
             // ==========================================
             setupInputs();
             buildArchitecture();
@@ -318,29 +318,29 @@ function init() {
             animate();
 
             window.addEventListener('resize', onWindowResize);
-        } // init 函数在这里正常结束！
+        } // The init function has ended normally here!
         
         // ==========================================
-        // 5. 其他函数定义 (在 init 函数外部)
+        // 5. Other function definitions (outside the init function)
         // ==========================================
         function buildArchitecture() { 
     const width = 24; 
     const length = 70;
-    const height = 10; // 总高不变
+    const height = 10; // The total height remains unchanged.
     const skylightHeight = 16.0;
     const skylightheight2 = 15.78;
-    // --- 墙体参数调整 ---
-    const skirtingHeight = 0.25; // 踢脚线高度
-    const newWallHeight = height - skirtingHeight; // 9.85m
-    // 新墙体中心位置 = 踢脚线高度 + (新墙体高度 / 2)
-    const newWallYCenter = skirtingHeight + (newWallHeight / 2); // 5.075m
+    // --- Wall parameter adjustment ---
+    const skirtingHeight = 0.25; // Casing height
+    const newWallHeight = height - skirtingHeight; 
+    // The center position of the new wall = Casing height + (new wall height / 2
+    const newWallYCenter = skirtingHeight + (newWallHeight / 2); 
 
 
-    // --- 替换为矩形天窗 (Rectangular Skylight) ---
+    // --- (Rectangular Skylight) ---
 
-    // 1. 定义矩形天窗的尺寸 (可根据房间尺寸 width=24, length=70 自行调整)
-    const skylightWidth = width * 0.95;  // 18米宽
-    const skylightLength = length * 1.05; // 59.5米长
+    // 1. Define the dimensions of the rectangular skylight 
+    const skylightWidth = width * 0.95;  
+    const skylightLength = length * 1.05; 
 
     // 2. 创建几何体 (平面)
     const rectangularSkylightGeo = new THREE.PlaneGeometry(skylightWidth, skylightLength);
