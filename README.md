@@ -1,4 +1,4 @@
-<img width="2470" height="1439" alt="2" src="https://github.com/user-attachments/assets/a20e98e1-c77b-4011-90f8-b48e55a91fe9" /># Virtual Louvre: A Web-Based Immersive Art Experience
+# Virtual Louvre: A Web-Based Immersive Art Experience
 
 A lightweight, high-fidelity virtual museum experience built with **Three.js**. This project allows users to explore iconic museum spaces, such as the Grand Gallery and the Sculpture Corridor, directly in their web browser with immersive controls and spatial audio.
 
