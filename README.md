@@ -1,4 +1,4 @@
-# Virtual Louvre: A Web-Based Immersive Art Experience
+<img width="2470" height="1439" alt="2" src="https://github.com/user-attachments/assets/a20e98e1-c77b-4011-90f8-b48e55a91fe9" /># Virtual Louvre: A Web-Based Immersive Art Experience
 
 A lightweight, high-fidelity virtual museum experience built with **Three.js**. This project allows users to explore iconic museum spaces, such as the Grand Gallery and the Sculpture Corridor, directly in their web browser with immersive controls and spatial audio.
 
@@ -11,7 +11,7 @@ Designed with a warm, gold-accented UI, this scene focuses on 2D art masterpiece
 
 ### 2. Gypsum Sculpture Corridor (`Green.html`)
 <img width="2147" height="1325" alt="1" src="https://github.com/user-attachments/assets/9427dafc-15b9-4400-abd4-1ed3434384c0" />
-<img width="2559" height="1439" alt="2" src="[https://github.com/user-attachments/assets/7740d6ad-be0d-426e-bad1-f28380435b6f](https://github.com/TianleXiao/Virtual-Louvre/blob/main/audio/2.png?raw=true)" />
+<img width="2470" height="1439" alt="2" src="https://github.com/user-attachments/assets/770cc1ce-1bae-4f29-9cda-a3da90ee9fa5" />
 
 This scene features a "Light Mode" aesthetic with spotlighting on 3D sculptures. It demonstrates the ability to load and render complex 3D geometry (`.gltf` / `.glb`) within a web environment.
 
